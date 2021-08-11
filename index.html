@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>beat the xxx</title>
+    <script src="jquery-3.6.0.slim.min.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="TotalGamesArea" id="totalGames"></div>
+
+      <div class="PlayerColumns">
+        <div class="PlayerColumn">
+          <div class="Player1NameBox">
+            <div class="PlayerName" id="playerRed"></div>
+          </div>
+          <div class="PlayerTotalPointsBox">
+            <div class="PlayerPoints" id="player1Points"></div>
+          </div>
+          <div class="Player1TotalPointsBar">
+            <div class="Player1Progress"></div>
+          </div>
+          <div class="GamesContainer">
+            <div id="player1GamesContainer"></div>
+          </div>
+        </div>
+
+        <div class="PlayerColumn">
+          <div class="Player2NameBox">
+            <div class="PlayerName" id="playerBlue"></div>
+          </div>
+          <div class="PlayerTotalPointsBox">
+            <div class="PlayerPoints" id="player2Points"></div>
+          </div>
+          <div class="Player2TotalPointsBar">
+            <div class="Player2Progress"></div>
+          </div>
+          <div class="GamesContainer">
+            <div id="player2GamesContainer"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    var params = new URLSearchParams(window.location.search);
+
+    if (params.has("totalGames")) {
+      $("#playerRed").html(params.get("playerRed"));
+      $("#playerBlue").html(params.get("playerBlue"));
+
+      var totalGames = parseInt(params.get("totalGames"));
+      var totalPoints = getMaxPoints(totalGames);
+
+      var player2Points = 0;
+      var player1Points = 0;
+      for (let index = 1; index <= totalGames; index++) {
+        if (params.has(`game${index}`)) {
+          $("#totalGames").append($("<div>").addClass("PointBoxPlayed"));
+        } else {
+          $("#totalGames").append(
+            $("<div>")
+              .addClass("PointBoxUnplayed")
+              .append($("<div>").html(index).addClass("PointBoxNumberUnplayed"))
+          );
+        }
+      }
+
+      for (let index = 1; index <= totalGames; index++) {
+        if (params.has(`game${index}`)) {
+          if (parseInt(params.get(`game${index}`)) == 2) {
+            player2Points += index;
+            $("#player2GamesContainer").append(
+              $("<div>")
+                .addClass("PointBoxUnplayed")
+                .append(
+                  $("<div>").html(index).addClass("PointBoxNumberUnplayed")
+                )
+            );
+          } else
+            $("#player2GamesContainer").append(
+              $("<div>").addClass("PointBoxPlayed")
+            );
+        } else
+          $("#player2GamesContainer").append(
+            $("<div>").addClass("PointBoxPlayed")
+          );
+      }
+
+      for (let index = 1; index <= totalGames; index++) {
+        if (params.has(`game${index}`)) {
+          if (parseInt(params.get(`game${index}`)) == 1) {
+            player1Points += index;
+            $("#player1GamesContainer").append(
+              $("<div>")
+                .addClass("PointBoxUnplayed")
+                .append(
+                  $("<div>").html(index).addClass("PointBoxNumberUnplayed")
+                )
+            );
+          } else
+            $("#player1GamesContainer").append(
+              $("<div>").addClass("PointBoxPlayed")
+            );
+        } else
+          $("#player1GamesContainer").append(
+            $("<div>").addClass("PointBoxPlayed")
+          );
+      }
+
+      $("#player1Points").html(player1Points);
+      $("#player2Points").html(player2Points);
+
+      $(".Player1Progress").css(
+        "width",
+        `${(player1Points / totalPoints) * 100}%`
+      );
+      $(".Player2Progress").css(
+        "width",
+        `${(player2Points / totalPoints) * 100}%`
+      );
+    }
+
+    function getMaxPoints(number) {
+      var maxPoints = 0;
+
+      while (number != 0) {
+        maxPoints += number;
+        number--;
+      }
+
+      return maxPoints;
+    }
+  </script>
+</html>

@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "88c9dfcc-cfac-4035-8edf-605230e50488",
+		"name": "Beat The Kid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Points",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5500/index.html?playerRed=Chris&playerBlue=Madita&totalGames=10&game1=1&game2=2&game3=2&game4=1&game5=1&game6=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5500",
+					"path": [
+						"index.html"
+					],
+					"query": [
+						{
+							"key": "playerRed",
+							"value": "Chris"
+						},
+						{
+							"key": "playerBlue",
+							"value": "Madita"
+						},
+						{
+							"key": "totalGames",
+							"value": "10"
+						},
+						{
+							"key": "game1",
+							"value": "1"
+						},
+						{
+							"key": "game2",
+							"value": "2"
+						},
+						{
+							"key": "game3",
+							"value": "2"
+						},
+						{
+							"key": "game4",
+							"value": "1"
+						},
+						{
+							"key": "game5",
+							"value": "1"
+						},
+						{
+							"key": "game6",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
