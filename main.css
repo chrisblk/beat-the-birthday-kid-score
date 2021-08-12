@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 309px;
     width: 309px;
     height: 71px;
     margin-bottom: 18px;
@@ -14,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 309px;
     width: 309px;
     height: 71px;
     margin-bottom: 18px;
@@ -44,7 +46,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin: 20px 60px;
 }
 
 .PlayerTotalPointsBox {
@@ -84,7 +86,9 @@
     width: 50px;
     height: 50px;
     background-color: #1A1C2B;
-    margin: 0 15.25px 15.25px 0;
+    margin: 0 12.25px 12.25px 0;
+
+    border: 0.5px solid #C7C7C7;
 }
 
 .PointBoxUnplayed {
@@ -95,7 +99,9 @@
     height: 50px;
     background: rgb(223,228,230);
     background: linear-gradient(180deg, rgba(223,228,230,1) 10%, rgba(199,206,210,1) 70%);
-    margin: 0 15.25px 15.25px 0;
+    margin: 0 12.25px 12.25px 0;
+
+    border: 0.5px solid #C7C7C7;
 }
 
 .PointBoxNumberPlayed {
@@ -226,8 +232,8 @@ main {
     align-items: center;
     flex-direction: column;
 
-    width: 1060px;
-    height: 860px;
+    width: 1130px;
+    height: 910px;
 
     background: rgb(251,228,33);
     background: radial-gradient(circle, rgba(251,228,33,1) 10%, rgba(243,166,9,1) 70%);
